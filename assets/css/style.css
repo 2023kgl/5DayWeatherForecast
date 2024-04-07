@@ -34,7 +34,7 @@ h1 {
     flex-direction: column;
     width: 25%;
     float: left;
-    border: 5px solid purple;
+    border: 5px solid purple;       /* WILL REMOVE ONCE DONE, IT HELPS ME SEE THE CONTAINER LAYOUT ON THE WEBPAGE */
 
 }
 
@@ -42,6 +42,10 @@ h1 {
     margin: 10px;
     padding: 10px;
     border-bottom: black 1px solid;
+}
+
+#savedsearch {
+    border: 5px solid blue          /* WILL REMOVE ONCE DONE, IT HELPS ME SEE THE CONTAINER LAYOUT ON THE WEBPAGE*/
 }
 
 .btn {
@@ -54,7 +58,7 @@ h1 {
     flex-direction: column;
     width: 75%;
     float: right;
-    border: 5px solid green;
+    border: 5px solid green;        /* WILL REMOVE ONCE DONE, IT HELPS ME SEE THE CONTAINER LAYOUT ON THE WEBPAGE*/
 }
 
 h2 , h3 {
@@ -63,9 +67,9 @@ h2 , h3 {
 }
 
 .todaysforecast{
-    border: 5px solid pink;
+    border: 5px solid pink;         /* WILL REMOVE ONCE DONE, IT HELPS ME SEE THE CONTAINER LAYOUT ON THE WEBPAGE */
 }
 
 .fivedayforecast {
-    border: 5px solid red;
+    border: 5px solid red;          /* WILL REMOVE ONCE DONE, IT HELPS ME SEE THE CONTAINER LAYOUT ON THE WEBPAGE */
 }

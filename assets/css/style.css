@@ -39,9 +39,10 @@ h1 {
 }
 
 .searcharea{
+    border: 5px solid yellow;           /* WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
     margin: 10px;
     padding: 10px;
-    border-bottom: black 1px solid;
+    border-bottom: yellow 1px solid;
 }
 
 .btn {
@@ -49,12 +50,16 @@ h1 {
     color: white;
 }
 
+#savedsearch {
+    border: 5px solid blue;         /* WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
+}
+
 .resultsSide{
     display: flex;
     flex-direction: column;
     width: 75%;
     float: right;
-    border: 5px solid green;
+    border: 5px solid green;            /* WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
 }
 
 h2 , h3 {
@@ -63,9 +68,9 @@ h2 , h3 {
 }
 
 .todaysforecast{
-    border: 5px solid pink;
+    border: 5px solid pink;         /* WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
 }
 
 .fivedayforecast {
-    border: 5px solid red;
+    border: 5px solid red;          /* WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
 }

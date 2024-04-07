@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    text-align: center;
+}
+
+.headercontainer {
+    background-color: #C0D6E4;
+    height: 150px;
+    width: 100%;
+}
+
+.title {
+    margin: 10px;
+    padding: 10px;
+    display: inline;
+    vertical-align: middle;
+    width: 100%;
+}
+
+h1 {
+    font-size: 50px;
+    color: white;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.searchside {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    float: left;
+    border: 5px solid purple;
+
+}
+
+.searcharea{
+    margin: 10px;
+    padding: 10px;
+    border-bottom: black 1px solid;
+}
+
+.btn {
+    background-color: #9DC7CF;
+    color: white;
+}
+
+.resultsSide{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    float: right;
+    border: 5px solid green;
+}
+
+h2 , h3 {
+    text-align: left;
+    font-size: 30px;
+}
+
+.todaysforecast{
+    border: 5px solid pink;
+}
+
+.fivedayforecast {
+    border: 5px solid red;
+}

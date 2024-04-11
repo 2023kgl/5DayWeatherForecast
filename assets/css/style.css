@@ -3,14 +3,24 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 header {
     text-align: center;
 }
+
+/* body {
+    background-color: blue;
+    background: linear-gradient(white, blue);
+} */
 
 .headercontainer {
     background-color: #C0D6E4;
     height: 150px;
     width: 100%;
+    background-image: url(/5DayWeatherForecast/assets/images/header-img.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .title {
@@ -27,6 +37,7 @@ h1 {
     margin: 10px;
     padding: 20px;
     text-align: center;
+    text-shadow: 2px 2px 5px black;
 }
 
 .searchside {
@@ -34,15 +45,15 @@ h1 {
     flex-direction: column;
     width: 25%;
     float: left;
-    border: 5px solid purple;
+    /* border: 5px solid purple;           WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
 
 }
 
 .searcharea{
-    border: 5px solid yellow;           /* WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
+    /* border: 5px solid yellow;           WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
     margin: 10px;
     padding: 10px;
-    border-bottom: yellow 1px solid;
+    border-bottom: black 1px solid;
 }
 
 .btn {
@@ -50,27 +61,15 @@ h1 {
     color: white;
 }
 
-#savedsearch {
-    border: 5px solid blue;         /* WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
-}
-
 .resultsSide{
     display: flex;
     flex-direction: column;
     width: 75%;
     float: right;
-    border: 5px solid green;            /* WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
+    /* border: 5px solid green;            WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
 }
 
 h2 , h3 {
     text-align: left;
     font-size: 30px;
-}
-
-.todaysforecast{
-    border: 5px solid pink;         /* WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
-}
-
-.fivedayforecast {
-    border: 5px solid red;          /* WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
 }

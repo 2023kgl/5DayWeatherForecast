@@ -41,8 +41,6 @@ h1 {
 }
 
 .searchside {
-    display: flex;
-    flex-direction: column;
     width: 25%;
     float: left;
     /* border: 5px solid purple;           WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
@@ -62,7 +60,6 @@ h1 {
 }
 
 .resultsSide{
-    display: flex;
     flex-direction: column;
     width: 75%;
     float: right;
@@ -72,4 +69,19 @@ h1 {
 h2 , h3 {
     text-align: left;
     font-size: 30px;
+}
+
+#dayone, #daytwo, #daythree, #dayfour, #dayfive {
+    border: solid 3px pink;
+    padding: 10px;
+    margin: 5px;
+    flex-direction: column;
+    height: auto;
+}
+
+@media only screen and (min-width: 425px){
+    h1 {
+        font-size: 40px;
+    }
+   
 }

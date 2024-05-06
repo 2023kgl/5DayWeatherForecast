@@ -1,9 +1,9 @@
 const searchbtn = document.getElementById('searchbtn');
 const searchinput = document.getElementById('searchinput');
-// const savedsearch = document.getElementById('savedsearch');
-let cityList = JSON.parse(localStorage.getItem('cityData')) || [];
+const savedsearch = document.getElementById('savedsearch');
 const todaysforecast = $('#todaysforecast');
 const weathericon = $('#weathericon');
+const fiveday = $('#fiveday')
 
 
 
@@ -11,121 +11,116 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function getApi() {
 
-    const city = searchinput.value;
-    cityList.push(city);
-    // cityList.JSON.stringify(localStorage.setItem(city))
+    const city = searchinput.value
 
     const apiKey = "422ac8d03f3e4abcd01a15a453bd7b43";
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
 
     fetch(url)
-    .then(function (response) {
-        // console.log(response);
-      return response.json();
-    })
-    .then(function(data){
-        console.log(data);
-          // handle received date here. display on to todays forecast and display 5 forecast which need to be saved to LS and add to search history seciton (buttons)
-        // call display today and call saved search
-
-        // var date = dayjs().format('MM/DD/YYYY');
-
-        let city = data.city.name;
-        let date = data.list[0].dt;
-        let temp = Math.round(data.list[0].main.temp);
-        let humidity = data.list[0].main.humidity;
-
-        document.querySelector('#city').innerHTML = "CITY: " + data.city.name;
-        document.querySelector('#date').innerHTML = "DATE: " + data.list[0].dt;
-        document.querySelector('#temp').innerHTML = "TEMPERATURE: " + Math.round(data.list[0].main.temp) + "°";
-        document.querySelector('#humidity').innerHTML = "HUMIDITY: " + data.list[0].main.humidity + "%";
-
-
-        // if(data.list[0].weather[0].main == "Clouds"){
-        //     weathericon.src = "5DayWeatherForecast/assets/images/clouds.png";
-        // }else if (data.list[0].weather[0].main == "Clear"){
-        // weathericon.src = "5DayWeatherForecast/assets/images/clear.png";
-        // }else if (data.list[0].weather[0].main == "Drizzle"){
-        // weathericon.src = "5DayWeatherForecast/assets/images/drizzle.png";
-        // }else if (data.list[0].weather[0].main == "Snow"){
-        // weathericon.src = "5DayWeatherForecast/assets/images/Snow.png";
-        // }else if (data.list[0].weather[0].main == "Wind"){
-        // weathericon.src = "5DayWeatherForecast/assets/images/Wind.png";
-        // }
-
-        console.log(date);
-        console.log(city);
-        console.log(temp);
-        console.log(humidity);
-
-        for(let i=0; i<data.list.length; i+=8){
-            const dayData = data.list[i];
-            displayFiveDays(dayData)
+    .then(response => {
+        if (!response.ok){
+            throw response.json()
         }
-
+        return response.json()
+    })
+    .then(data => {
+        console.log(data);
+        displayToday(data) 
+        getFiveDayForecast(data)
     })
     .catch(function(error){
         console.error('Error', error)
     })
+}  
 
-    localStorage.setItem('cityData', JSON.stringify(cityList));
-}
-
-$('#searchbtn').on('click', function(event){
+$('#searchbtn').on('click',function(event){
     event.preventDefault();
-    const searchinput = $('#searchinput').val();
-    getApi(searchinput);
-
+    getApi();
+    saveSearchedCities();
+    savedSearch();
+    searchinput.value = ''
+})
 })
 
-})
+// save searched cities to local storage        
+
+function saveSearchedCities(){
+
+    // retrieving data from the brower's local storage with key "cityData", then parsing from JSON format to JS object. If no data stored in key, it assings an empty array to cityList
+    let cityList = JSON.parse(localStorage.getItem('cityData')) || [];
+
+    // this is taking the input value and calling it city
+    const city = searchinput.value;
+
+    // this is adding the city to the cityList
+    cityList.push(city);
+
+    // this is saving the added city to the cityList in localStorage under key "cityData"
+    localStorage.setItem('cityData', JSON.stringify(cityList))
+
+}
 
 // logic for displaying todays forecast
-function displayToday(){
+function displayToday(data){
 
-    // document.querySelector('#city').innerHTML = "CITY: " + data.city.name;
-    // document.querySelector('#date').innerHTML = "DATE: " + data.list[0].dt;
-    // document.querySelector('#temp').innerHTML = "TEMPERATURE: " + Math.round(data.list[0].main.temp) + "°";
-    // document.querySelector('#humidity').innerHTML = "HUMIDITY: " + data.list[0].main.humidity + "%";
-   
-
+    document.querySelector('#city').innerHTML = "CITY: " + data.city.name;
+    document.querySelector('#date').innerHTML = "DATE: " + data.list[0].dt_txt;
+    document.querySelector('#temp').innerHTML = "TEMPERATURE: " + Math.round(data.list[0].main.temp) + "°";
+    document.querySelector('#humidity').innerHTML = "HUMIDITY: " + data.list[0].main.humidity + "%";
 }
 
-// logic for displaying 5 day forecast
-function displayFiveDays(){
+function getFiveDayForecast(data){
 
- let dayCard = document.createElement("div");
- dayCard.className = "card"
+    fiveday.empty()
 
- let dayCardContent = document.createElement("div");
- dayCardContent.className = "da"
+    while (data.list.length >= 8) {
 
+        let dayData = data.list.splice(0,8)
+
+        let day = dayData[0]
+
+        let dayCard = $('<div>').addClass('card text-dark bg-light mb-3')
+        dayCard.css('max-width', '50%')
+        dayCard.appendTo(fiveday)
+
+        let city = $('<div>').addClass('card-header').text('City ' + data.city.name)
+        city.appendTo(dayCard)
+
+        let cardBody = $('<div>').addClass('card-body')
+        cardBody.appendTo(dayCard)
+
+        let date = $('<h5>').addClass('card-title').text('Date ' + day.dt_txt)
+        date.appendTo(cardBody)
+
+        let temp = $('<p>').addClass('card-text').text('Temperature ' + day.main.temp + "°")
+        temp.appendTo(cardBody)
+
+        let humidity = $('<p>').addClass('card-text').text('Humidity ' + day.main.humidity + "%")
+        humidity.appendTo(cardBody)
+
+    }
 }
 
-// logic for saving and display as link button searched cities history
+// logic to display as link button searched cities history
 function savedSearch(){
 
-// let cityList = JSON.parse(localStorage.getItem('city'))
+    let cityList = JSON.parse(localStorage.getItem('cityData'))
+    const savedSearch = $('#savedsearch')
 
-// cityList.forEach(function(city) {
+    savedSearch.empty()
 
-//     const fiveday = $('#fiveday')
-//     newButtonLink.createElement("button")
-//     newButtonLink.appendTo(fiveday)
-
-//     let newButtonLink = $('<a>').addClass('btn btn-primary" href="#" role="button').text(searchinput);
-//     let removeX = $('<a>').addClass('btn btn-outline-danger');
-//     removeX.appendTo(newButtonLink)
-    
-// });
-
-
+    for (let i=0; i<cityList.length; i++){
+        let cityButton = $('<button>').attr('value', cityList[i]).text(cityList[i]).addClass('btn btn-light btn-hover-bg-shade-amount:15%')
+        cityButton.appendTo(savedSearch)
+   
+        cityButton.on('click', function(event){
+        event.preventDefault()
+        getApi(city)
+        
+    })
+}
 }
 
-$(document).ready(function (){
-    displayToday();
-    displayFiveDays()
-    savedSearch();
-}
-
-)
+$(document).ready( function () {
+    savedSearch()
+})

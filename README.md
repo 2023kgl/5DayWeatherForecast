@@ -20,7 +20,7 @@ Copy and past this link into your preferred brower, https://2023kgl.github.io/5D
 
 Then simply enter the city name and click the search button. You will be able to see today's forecast followed by the 5 day forecast. Your search history will be displayed under the search button, when you click on the button from the search history list, you will be able to see that the forecast for the city again.
 
-![Weather Homepage](./assets/images)
+![Weather Homepage](./assets/images/weatherapp.png)
 
 ## Credits
 

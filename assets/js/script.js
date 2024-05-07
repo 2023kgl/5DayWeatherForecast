@@ -65,9 +65,13 @@ function displayToday(data){
 
     document.querySelector('#city').innerHTML = "CITY: " + data.city.name;
     document.querySelector('#date').innerHTML = "DATE: " + data.list[0].dt_txt;
+    document.querySelector('#icon').innerHTML = data.list[0].weather[0].main;
     document.querySelector('#temp').innerHTML = "TEMPERATURE: " + Math.round(data.list[0].main.temp) + "°";
     document.querySelector('#humidity').innerHTML = "HUMIDITY: " + data.list[0].main.humidity + "%";
+    document.querySelector('#wind').innerHTML = "WIND SPEED: " + data.list[0].wind.speed;
 }
+
+// display 5 day forecast
 
 function getFiveDayForecast(data){
 
@@ -83,20 +87,26 @@ function getFiveDayForecast(data){
         dayCard.css('max-width', '50%')
         dayCard.appendTo(fiveday)
 
-        let city = $('<div>').addClass('card-header').text('City ' + data.city.name)
+        let city = $('<div>').addClass('card-header').text('City: ' + data.city.name)
         city.appendTo(dayCard)
 
         let cardBody = $('<div>').addClass('card-body')
         cardBody.appendTo(dayCard)
 
-        let date = $('<h5>').addClass('card-title').text('Date ' + day.dt_txt)
+        let date = $('<h5>').addClass('card-title').text('Date: ' + day.dt_txt)
         date.appendTo(cardBody)
 
-        let temp = $('<p>').addClass('card-text').text('Temperature ' + day.main.temp + "°")
+        let icon = $('<icon>').addClass('card-text').text(day.weather[0].main)
+        icon.appendTo(cardBody)
+
+        let temp = $('<p>').addClass('card-text').text('Temperature: ' + day.main.temp + "°")
         temp.appendTo(cardBody)
 
-        let humidity = $('<p>').addClass('card-text').text('Humidity ' + day.main.humidity + "%")
+        let humidity = $('<p>').addClass('card-text').text('Humidity: ' + day.main.humidity + "%")
         humidity.appendTo(cardBody)
+
+        let wind = $('<p>').addClass('card-text').text("WIND SPEED:  " + day.wind.speed)
+        wind.appendTo(cardBody)
 
     }
 }
@@ -111,15 +121,16 @@ function savedSearch(){
 
     for (let i=0; i<cityList.length; i++){
         let cityButton = $('<button>').attr('value', cityList[i]).text(cityList[i]).addClass('btn btn-light btn-hover-bg-shade-amount:15%')
-        cityButton.appendTo(savedSearch)
-   
-        cityButton.on('click', function(event){
-        event.preventDefault()
-        getApi(city)
+        cityButton.appendTo(savedSearch);
         
-    })
+// button not working .... devtools console says "getApi not defined"
+        cityButton.on('click', function (){
+            let city = cityButton.val()
+            getApi(city)
+        })
+    }
 }
-}
+
 
 $(document).ready( function () {
     savedSearch()

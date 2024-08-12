@@ -8,73 +8,153 @@ header {
     text-align: center;
 }
 
-/* body {
-    background-color: blue;
-    background: linear-gradient(white, blue);
-} */
+body {
+    color: #3A2D28;
+}
 
 .headercontainer {
-    background-color: #C0D6E4;
+    background-color: #D1C7BD;
     height: 150px;
     width: 100%;
-    background-image: url(/5DayWeatherForecast/assets/images/header-img.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
 }
 
 .title {
-    margin: 10px;
-    padding: 10px;
-    display: inline;
-    vertical-align: middle;
+    margin: 0;
+    padding: 0;
     width: 100%;
+    text-align: center;
 }
 
 h1 {
     font-size: 50px;
-    color: white;
-    margin: 10px;
+    color: #F1EDE6;
+    margin: 0;
     padding: 20px;
     text-align: center;
-    text-shadow: 2px 2px 5px black;
+    text-shadow: 2px 2px 5px #3A2D28;
 }
 
 .searchside {
     width: 25%;
     float: left;
-    /* border: 5px solid purple;           WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
+}
 
+.form-label {
+    color: #A48374;
 }
 
 .searcharea{
-    /* border: 5px solid yellow;           WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
     margin: 10px;
     padding: 10px;
     border-bottom: black 1px solid;
 }
 
 .btn {
-    background-color: #9DC7CF;
-    color: white;
+    background-color: #EBE3DB;
+    color: #A48374;
+    width: 100%;
+}
+
+#savedsearch button {
+    width: 100%; 
+    max-width: 300px;
+    margin-bottom: 10px;
 }
 
 .resultsSide{
     flex-direction: column;
     width: 75%;
     float: right;
-    /* border: 5px solid green;            WILL DELETE OR COMMENT OUT WHEN DONE, HIS HELPS ME SEE THE LAYOUT */
 }
 
 h2 , h3 {
-    text-align: left;
+    text-align: center;
     font-size: 30px;
+    color: #CBAD8D
 }
 
-#dayone, #daytwo, #daythree, #dayfour, #dayfive {
-    border: solid 3px pink;
-    padding: 10px;
-    margin: 5px;
+#todaysforecast {
+    text-align: center; 
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 400px;
+    background-color: #F1EDE6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#todaysforecast h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#today {
+    display: flex;
     flex-direction: column;
-    height: auto;
+    align-items: center; 
+}
+
+#icon {
+    margin: 10px 0;
+}
+
+#today p {
+    margin: 5px 0;
+    font-size: 1.2em;
+}
+
+#today p#temp {
+    font-weight: bold;
+}
+
+.fivedayforecast {
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 100%;
+}
+
+#fiveday {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+#fiveday .card {
+    flex: 1 1 calc(20% - 20px);
+    max-width: 200px;
+    min-width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px;
+}
+
+#fiveday .card-header {
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+    background-color: #EBE3DB;
+    color: #A48374;
+
+}
+
+#fiveday .card-body {
+    text-align: left;
+    padding: 10px;
+    background-color: white;
+    color: #3A2D28;
+}
+
+#fiveday .card-text {
+    margin: 5px 0;
+}
+
+#fiveday .card-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }

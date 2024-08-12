@@ -20,9 +20,9 @@ Copy and past this link into your preferred brower, https://2023kgl.github.io/5D
 
 Then simply enter the city name and click the search button. You will be able to see today's forecast followed by the 5 day forecast. Your search history will be displayed under the search button, when you click on the button from the search history list, you will be able to see that the forecast for the city again.
 
-![Weather Homepage](./assets/images/weatherapp.png)
+![Weather Homepage](./assets/images/newWeatherApp.png)
 
 ## Credits
 
-Used Youtube to search how to do certain tasks and better understand.
+Used Youtube to search how to add better functioning styling, learn more about creating functions for using API data, and better understand.
 Used google, W3, MDN Webdocs, ChatGPT, previous challenges, previous mini-projects, and instructor/TA's.
